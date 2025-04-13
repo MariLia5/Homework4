@@ -27,15 +27,26 @@ namespace Homework4
             string russian = russianFilter(input);
             string latin = latinFilter(input);
 
-            // Записываем в файл
-            File.WriteAllText("output.txt",
-                $"1(цифры): {digits}\n" +
-                $"2(знаки препинания): {punctuation}\n" +
-                $"3(русские символы): {russian}\n" +
-                $"4(латинские символы): {latin}");
+            // Запись в файл
+            using (StreamWriter writer = new StreamWriter("output.txt"))
+            {
+                writer.WriteLine($"1(цифры): {digits}");
+                writer.WriteLine($"2(знаки препинания): {punctuation}");
+                writer.WriteLine($"3(русские символы): {russian}");
+                writer.WriteLine($"4(латинские символы): {latin}");
+            }
 
-            Console.WriteLine("Результат сохранён в output.txt");
-            Console.WriteLine(File.ReadAllText("output.txt"));
+
+            // Чтение из файла и вывод на консоль
+            Console.WriteLine("\nРезультат сохранён в output.txt:");
+            using (StreamReader reader = new StreamReader("output.txt"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
         }
     }
 }
