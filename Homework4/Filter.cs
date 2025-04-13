@@ -10,48 +10,40 @@ namespace Homework4
 
     internal class Filter
     {
-        public static string FilterDigits(string input) // Фильтр чисел
+        public static string FilterDigits(string input) // Фильтр чисел 
         {
-            var result = new StringBuilder();
+            string result = "";
             foreach (char c in input)
-            {
                 if (char.IsDigit(c))
-                    result.Append(c);
-            }
-            return result.ToString();
+                    result += c;
+            return result;
         }
 
         public static string FilterPunctuation(string input) // Фильтр знаков пунктуации
         {
-            var result = new StringBuilder();
+            string result = "";
             foreach (char c in input)
-            {
                 if (char.IsPunctuation(c))
-                    result.Append(c);
-            }
-            return result.ToString();
+                    result += c;
+            return result;
         }
 
-        public static string FilterRussian(string input) // Фильтр русских симловов
+        public static string FilterRussian(string input) // Фильтр русских символов
         {
-            var result = new StringBuilder();
+            string result = "";
             foreach (char c in input)
-            {
                 if ((c >= 'А' && c <= 'Я') || (c >= 'а' && c <= 'я') || c == 'Ё' || c == 'ё')
-                    result.Append(c);
-            }
-            return result.ToString();
+                    result += c;
+            return result;
         }
 
-        public static string FilterLatin(string input) // Фильтр латинских симловов
+        public static string FilterLatin(string input) // Фильтр латинских символов
         {
-            var result = new StringBuilder();
+            string result = "";
             foreach (char c in input)
-            {
                 if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-                    result.Append(c);
-            }
-            return result.ToString();
+                    result += c;
+            return result;
         }
     }
 }
